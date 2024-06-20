@@ -5,6 +5,15 @@ app = FastAPI()
 
 @app.get('/recipes/{food}')
 async def get_recipe(food: str):
+    """
+    Retrieve recipes based on the specified food.
+
+    Args:
+        food (str): The name of the food to search for recipes.
+
+    Returns:
+        dict: A dictionary containing the count of recipes found and a list of recipes.
+    """
     try:
         url = f"https://forkify-api.herokuapp.com/api/search?q={food}"
         response = requests.get(url)
